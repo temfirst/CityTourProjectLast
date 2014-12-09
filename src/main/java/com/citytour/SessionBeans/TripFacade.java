@@ -16,7 +16,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class TripFacade extends AbstractFacade<Tour> {
-    @PersistenceContext(unitName = "com.mycompany_CityTourAndTravel_war_1.0-SNAPSHOTPU")
+    @PersistenceContext(unitName = "com.mycompany_CityTour")
     private EntityManager em;
 
     @Override

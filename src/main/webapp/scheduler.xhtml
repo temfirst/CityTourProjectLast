@@ -7,7 +7,7 @@
       xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="pagelayout.xhtml">
-        <ui:define name="title">Add Site</ui:define>
+        <ui:define name="title">Add Schedule</ui:define>
         <ui:define name="content">
             <h:form id="siteForm1">
                 <h:panelGrid columns="2">
@@ -23,13 +23,13 @@
 
 
                 </h:panelGrid>
-                <h:commandButton value="Add Site" action="#{siteController.doCreateSite()}">
+                <h:commandButton value="Add Schedule" action="#{siteController.doCreateSite()}">
 
                 </h:commandButton>
             </h:form>
 
             <hr/>
-            <h1> List of sites</h1>
+            <h1> List of Schedule</h1>
             <p:dataTable id="sitelist" value="#{siteController.doFindAllSite()}" var="st" editable="true" style="margin-bottom:10px">
                 <p:column>
                     <f:facet name="header">

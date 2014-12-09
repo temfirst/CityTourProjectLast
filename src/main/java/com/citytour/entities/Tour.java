@@ -5,6 +5,7 @@ package com.citytour.entities;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -23,13 +25,15 @@ public class Tour implements Serializable {
     private Long tour_id;
     @Temporal(TemporalType.DATE)
     private Date date;
-    @Temporal(TemporalType.TIME)
-    private Date startingTime;
-    @Temporal(TemporalType.TIME)
-    private Date endingTime;
     private double price;
     private int numb_of_visitors;
-    private Site site;
+    @OneToOne
+    @JoinColumn(name="Staff_ID")
+    private Staff staff;
+    
+    @OneToOne(cascade= CascadeType.ALL)
+    @JoinColumn(name="Sched_ID")
+    private Schedules sch;
 
     public Long getTour_id() {
         return tour_id;
@@ -45,22 +49,6 @@ public class Tour implements Serializable {
 
     public void setDate(Date date) {
         this.date = date;
-    }
-
-    public Date getStartingTime() {
-        return startingTime;
-    }
-
-    public void setStartingTime(Date startingTime) {
-        this.startingTime = startingTime;
-    }
-
-    public Date getEndingTime() {
-        return endingTime;
-    }
-
-    public void setEndingTime(Date endingTime) {
-        this.endingTime = endingTime;
     }
 
     public double getPrice() {
@@ -80,16 +68,5 @@ public class Tour implements Serializable {
         this.numb_of_visitors = numb_of_visitors;
     }
 
-    
-    
-    public Site getSite() {
-        return site;
-    }
-
-    public void setSite(Site site) {
-        this.site = site;
-    }
-
-    
-    
+        
 }

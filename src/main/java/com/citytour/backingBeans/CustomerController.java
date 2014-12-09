@@ -50,4 +50,8 @@ public class CustomerController {
    
      public CustomerController() {
     }
+     
+    public void populateTable(){
+        
+    }
 }
