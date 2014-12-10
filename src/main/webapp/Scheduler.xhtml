@@ -1,0 +1,67 @@
+  <!--  <?xml version='1.0' encoding='UTF-8' ?>
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:h="http://xmlns.jcp.org/jsf/html"
+          xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+          xmlns:f="http://xmlns.jcp.org/jsf/core"
+          xmlns:p="http://primefaces.org/ui">
+
+        <ui:composition template="pagelayout.xhtml">
+            <ui:define name="title">Add Schedule</ui:define>
+            <ui:define name="content">
+                <h:form id="siteForm1">
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Site : "/>
+                    <h:selectManyCheckbox></h:selectManyCheckbox>
+                    <h:inputText value="#{scheduleController.schedule.site}"/>
+
+
+                    <h:outputLabel value="StartTime : "/>
+                    <h:inputText value="#{scheduleController.sch.startTime}"/>
+
+                    <h:outputLabel value="EndTime : "/>
+                    <h:inputText value="#{scheduleController.sch.endTime}"/>
+
+
+                </h:panelGrid>
+                    <h:commandButton value="Add Schedule" action="#{scheduleController.doCreateSchedual()}">
+
+                </h:commandButton>
+                </h:form>
+
+                <hr/>
+          <h1> List of Schedule</h1>
+          <p:dataTable id="sitelist" value="#{siteController.doFindAllSite()}" var="st" editable="true" style="margin-bottom:10px">
+              <p:column>
+                  <f:facet name="header">
+                      <h:outputText value="Site_ID"/>
+                  </f:facet>
+                  <h:outputText value="#{st.site_id}"/>
+              </p:column>
+
+              <p:column>
+                  <f:facet name="header">
+                      <h:outputText value="Category"/>
+                   </f:facet>
+                  <h:outputText value="#{st.category}"/>
+              </p:column>
+              <p:column>
+                  <f:facet name="header">
+                      <h:outputText value="Distance"/>
+                   </f:facet>
+                  <h:outputText value="#{st.distance}"/>
+              </p:column>
+
+              <p:column>
+                  <f:facet name="header">
+                      <h:outputText value="Address"/>
+                   </f:facet>
+                  <h:outputText value="#{st.address}"/>
+              </p:column>
+          </p:dataTable>
+                 </ui:define>
+        </ui:composition>
+
+    </html>
+
+ --!>

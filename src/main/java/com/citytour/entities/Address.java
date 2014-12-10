@@ -28,6 +28,8 @@ public class Address implements Serializable {
     private String city;
     private String county;
     private String state;
+    private String zip_Code;
+    private String phone_Number;
 
     public String getAddress_Line1() {
         return address_Line1;
@@ -84,8 +86,7 @@ public class Address implements Serializable {
     public void setPhone_Number(String phone_Number) {
         this.phone_Number = phone_Number;
     }
-    private String zip_Code;
-    private String phone_Number;
+  
     
             
             

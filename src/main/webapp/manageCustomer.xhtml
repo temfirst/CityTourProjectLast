@@ -3,9 +3,63 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     
-
-
-    </html>
+    <ui:composition template="pagelayout.xhtml">
+        <ui:define name="title">Register</ui:define>
+        <ui:define name="content">
+            <h:form id="siteForm1">
+            <h:panelGrid columns="2">
+                <h:outputLabel value="FirstName : "/>
+               
+                <h:inputText value="#{customerController.cust.fName}" required="true"/>
+                
+                
+                <h:outputLabel value="LastName : "/>
+                <h:inputText value="#{customerController.cust.lName}" required="true"/>
+                
+                <h:outputLabel value="Componey : "/>
+                <h:inputText value="#{customerController.cust.company}" required="true"/>
+                 
+                 <h:outputLabel value="Address Line1 : "/>
+                 <h:inputText value="#{customerController.cust.address.address_Line1}"required="true"/>
+                 
+                  <h:outputLabel value="Address Line2 : "/>
+                  <h:inputText value="#{customerController.cust.address.address_Line2}"required="true"/>
+                 
+                 <h:outputLabel value="Address Line1 : "/>
+                 <h:inputText value="#{customerController.cust.address.address_Line1}"required="true"/>
+                 
+                  <h:outputLabel value="City : "/>
+                  <h:inputText value="#{customerController.cust.address.city}"required="true"/>
+                  
+                   <h:outputLabel value="Country : "/>
+                   <h:inputText value="#{customerController.cust.address.county}"required="true"/>
+                 
+                  <h:outputLabel value="State : "/>
+                  <h:inputText value="#{customerController.cust.address.state}"required="true"/>
+                  
+                   <h:outputLabel value="Zip_code : "/>
+                   <h:inputText value="#{customerController.cust.address.zip_Code}"required="true"/>
+                   
+                    <h:outputLabel value="Phone_Number : "/>
+                    <h:inputText value="#{customerController.cust.address.phone_Number}"required="true"/>
+                 
+                <h:outputLabel value=" I certify that I am over the age of 18 : "/>
+                <h:selectBooleanCheckbox value="#{customerController.cust.certified}"required="true"/>
+                
+                <h:outputLabel value="  Please add me to The Mailing List!Mailing List subscribers are the first to know about newly added shows, special ticket offers and news! : "/>
+                <h:selectBooleanCheckbox value="#{customerController.cust.onMailingList}"/> 
+            
+            * are required fields
+            </h:panelGrid>
+                <h:commandButton value="Register" action="#{customerController.doCreateCustomer()}">
+               
+                   <h:commandButton value="Cancel" action="#{"NotRegister"}"> 
+            </h:commandButton>
+            </h:form>
+            
+            <hr/>
+     
 

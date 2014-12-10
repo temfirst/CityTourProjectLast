@@ -23,6 +23,7 @@ import javax.persistence.OneToMany;
  */
 @Entity
 @NamedQuery(name="findAllCust", query="SELECT c FROM Customer c")
+
 public class Customer extends Person implements Serializable {
     private static final long serialVersionUID = 1L;
     

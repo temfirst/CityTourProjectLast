@@ -33,7 +33,7 @@ public class Person implements Serializable {
     private String lName;
     private String company;
     private boolean onMailingList;
-    private boolean cirtify;
+  
     @Embedded
     private Address address;
 
@@ -77,13 +77,7 @@ public class Person implements Serializable {
         this.onMailingList = onMailingList;
     }
 
-    public boolean isCirtify() {
-        return cirtify;
-    }
-
-    public void setCirtify(boolean cirtify) {
-        this.cirtify = cirtify;
-    }
+    
 
     public Long getId() {
         return id;

@@ -6,8 +6,9 @@
 package com.citytour.backingBeans;
 
 import com.citytour.SessionBeans.CustomerFacade;
-import com.citytour.entities.Address;
+import com.citytour.SessionBeans.ScheduleFacade;
 import com.citytour.entities.Customer;
+import com.citytour.entities.Schedule;
 import javax.enterprise.context.Dependent;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
@@ -20,39 +21,32 @@ import javax.inject.Inject;
 @Named(value = "customerController")
 @RequestScoped
 
-public class CustomerController {
+public class SchedualeController {
    
     @Inject 
-    private CustomerFacade customerEJB;
-    private Customer cust=new Customer();
-     
-      
-  
-    
+    private ScheduleFacade ScheduleEJB;
+    private Schedule sch=new Schedule();
 
-    public CustomerFacade getCustomerEJB() {
-        return customerEJB;
+    public ScheduleFacade getScheduleEJB() {
+        return ScheduleEJB;
     }
 
-    public void setCustomerEJB(CustomerFacade customerEJB) {
-        this.customerEJB = customerEJB;
+    public void setScheduleEJB(ScheduleFacade ScheduleEJB) {
+        this.ScheduleEJB = ScheduleEJB;
     }
 
-    public Customer getCust() {
-        return cust;
+    public Schedule getSch() {
+        return sch;
     }
 
-    public void setCust(Customer cust) {
-        this.cust = cust;
+    public void setSch(Schedule sch) {
+        this.sch = sch;
     }
-    
-      
-    public String doCreateCustomer()
+  public String doCreateSchedual()
     {
-      customerEJB.createCustomer(cust);
+      ScheduleEJB.create(sch);
       return "null";
     }
    
-     public CustomerController() {
-    }
 }
+ 
