@@ -32,6 +32,15 @@ public class Schedules implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
+    private double price;
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
     @Temporal(TemporalType.TIME)
     private Date startTime;
     
@@ -47,6 +56,10 @@ public class Schedules implements Serializable {
     public Schedules() {
     }
 
+    public void addSites(Site si){
+        sites.add(si);        
+    }
+    
     public Date getStartTime() {
         return startTime;
     }

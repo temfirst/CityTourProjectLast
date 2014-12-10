@@ -24,8 +24,7 @@ public class Tour implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long tour_id;
     @Temporal(TemporalType.DATE)
-    private Date date;
-    private double price;
+    private Date date;    
     private int numb_of_visitors;
     @OneToOne
     @JoinColumn(name="Staff_ID")
@@ -50,15 +49,6 @@ public class Tour implements Serializable {
     public void setDate(Date date) {
         this.date = date;
     }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-   
 
     public int getNumb_of_visitors() {
         return numb_of_visitors;

@@ -5,44 +5,27 @@
  */
 package com.citytour.SessionBeans;
 
-import com.citytour.entities.Customer;
-import com.citytour.entities.Site;
-import java.util.List;
+import com.citytour.entities.Schedules;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-
-
 /**
  *
- * @author CS Life
+ * @author User
  */
 @Stateless
-public class SiteFacade extends AbstractFacade<Site> {
+public class SchedulesFacade extends AbstractFacade<Schedules> {
     @PersistenceContext(unitName = "com.mycompany_CityTour")
     private EntityManager em;
-
-    
-    public Site createSite(Site site)
-    {
-        em.persist(site);
-        return site;
-    }       
-    public List<Site> findAllSite()
-    {
-        return em.createNamedQuery("findAllSite",Site.class).getResultList();
-        
-    }
-       
 
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
 
-    public SiteFacade() {
-        super(Site.class);
+    public SchedulesFacade() {
+        super(Schedules.class);
     }
     
 }

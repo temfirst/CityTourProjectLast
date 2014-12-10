@@ -20,6 +20,7 @@ public class Site implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long site_id;
+    private String name;
     private Double distance;
     private String category;
     private String address;
@@ -44,6 +45,14 @@ public class Site implements Serializable {
         return category;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
     public void setCategory(String category) {
         this.category = category;
     }
