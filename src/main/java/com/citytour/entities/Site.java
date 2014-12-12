@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 
 
@@ -25,6 +26,7 @@ public class Site implements Serializable {
     private String category;
     private String address;
 
+    
     public Long getSite_id() {
         return site_id;
     }
@@ -79,6 +81,8 @@ public class Site implements Serializable {
 
     @Override
     public String toString() {
-        return "com.library.entities.sit[ id=" + site_id + " ]";
+        return "Site{" + "site_id=" + site_id + ", name=" + name + ", distance=" + distance + ", category=" + category + ", address=" + address + '}';
     }
+
+    
 }

@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="pagelayout.xhtml">
+        <ui:define name="title">Selecting Date</ui:define>
+        <ui:define name="content">
+            
+            <hr/>
+            <h1> Summary of Purchase </h1>
+            <h:form> 
+                <ul>
+                    <ui:repeat value="#{dateController.cartList}" var="p" varStatus="status">
+
+                        <li><h:commandLink value="#{p.description + p.quantity + p.tax + p.unitPrice}"/> </li>
+                    </ui:repeat> <br/>  
+                    
+                            <h:commandButton  value="Back" action="#"/>
+                            <h:commandButton  value="Cancel" action="#"/>
+                            <h:commandButton  value="Check Out" action="#"/>                   
+                    
+
+                </ul>
+            </h:form>           
+
+
+        </ui:define>
+    </ui:composition>
+
+</html>
+

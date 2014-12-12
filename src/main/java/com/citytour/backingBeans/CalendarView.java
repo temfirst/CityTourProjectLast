@@ -2,14 +2,20 @@ package com.citytour.backingBeans;
  
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
  
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.SelectEvent;
  
-@ManagedBean
+@Named(value="calendatView")
+@RequestScoped
+
 public class CalendarView {
          
     private Date date1;

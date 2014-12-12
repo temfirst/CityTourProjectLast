@@ -26,6 +26,7 @@ public class Tour implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date date;    
     private int numb_of_visitors;
+    
     @OneToOne
     @JoinColumn(name="Staff_ID")
     private Staff staff;
@@ -54,6 +55,23 @@ public class Tour implements Serializable {
         return numb_of_visitors;
     }
 
+    public Staff getStaff() {
+        return staff;
+    }
+
+    public void setStaff(Staff staff) {
+        this.staff = staff;
+    }
+
+    public Schedules getSch() {
+        return sch;
+    }
+
+    public void setSch(Schedules sch) {
+        this.sch = sch;
+    }
+    
+    
     public void setNumb_of_visitors(int numb_of_visitors) {
         this.numb_of_visitors = numb_of_visitors;
     }

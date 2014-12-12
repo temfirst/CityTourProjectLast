@@ -24,21 +24,33 @@ import javax.inject.Inject;
 
 
 @Named(value = "scheduleController")
-@RequestScoped
+@SessionScoped
 
 public class ScheduleController {
    
     @Inject 
     private SchedulesFacade scheduleEJB;
+    
     @Inject
     private SiteFacade siteEJB;
     
     private Schedules sch=new Schedules();
     private List<Site> sites = new ArrayList<Site>();
-    private List<Site>popedSites = new ArrayList<Site>();
+    private List<Site>popedSites =  new ArrayList<Site>();
+    private Long [] temp;
+    
+    
+    public List<Site> getPopedSites() {
+        return popedSites = siteEJB.findAllSite();
+    }
+
+    public void setPopedSites(List<Site> popedSites) {
+        this.popedSites = popedSites;
+    }
+    
     private List<String> str;    
     
-    public ScheduleController() {
+    public ScheduleController(){
     }
 
     public List<String> getStr() {
@@ -53,14 +65,20 @@ public class ScheduleController {
     public SiteFacade getSiteEJB() {
         return siteEJB;
     }
+    
+    @PostConstruct 
+    public void popedSites() { 
+        popedSites = siteEJB.findAllSite();
+        temp = new Long [popedSites.size()];
+    } 
 
-    public List<Site> getPopedSites() {
-        return this.siteEJB.findAllSite();
+    public Long [] getTemp() {
+        return temp;
     }
 
-    public void setPopedSites(List<Site> popedSites) {
-        this.popedSites = popedSites;
-    }
+    public void setTemp(Long [] temp) {
+        this.temp = temp;
+    }  
     
     
     public void setSiteEJB(SiteFacade siteEJB) {
@@ -97,11 +115,21 @@ public class ScheduleController {
         this.sch = sch;
     }
     
+    public List<Site> prepareSites(){
+        for(int i=0; i<popedSites.size()-1;i++){
+            if(popedSites.get(i).getSite_id()== temp[i])
+                sites.add(popedSites.get(i));
+        }
+        
+        return sites;
+    }
+    
     public String doCreateSchedule()
     {
-      sch.setSites(sites);
+      
+      sch.setSites(prepareSites());
       scheduleEJB.create(sch);
-      return "null"; 
+      return "index"; 
     }
     
     

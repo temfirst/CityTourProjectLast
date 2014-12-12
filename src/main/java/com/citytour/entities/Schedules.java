@@ -6,6 +6,7 @@
 package com.citytour.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -27,11 +28,12 @@ import javax.persistence.TemporalType;
  */
 @Entity
 public class Schedules implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     private double price;
 
     public double getPrice() {
@@ -43,23 +45,25 @@ public class Schedules implements Serializable {
     }
     @Temporal(TemporalType.TIME)
     private Date startTime;
-    
+
     @Temporal(TemporalType.TIME)
     private Date endTime;
-       
+
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinTable(name="site_schedule", 
-            joinColumns= @JoinColumn(name="sch_ID"),
-            inverseJoinColumns=@JoinColumn(name="site_Id"))
-    private List<Site> sites;
-    
+//    @JoinTable(name = "site_schedule",
+//            joinColumns = {
+//                @JoinColumn(name = "sch_ID", referencedColumnName="sch_ID")},
+//            inverseJoinColumns = {
+//                @JoinColumn(name = "site_Id", referencedColumnName="site_Id")})
+    private List<Site> sites = new ArrayList<Site>();
+
     public Schedules() {
     }
 
-    public void addSites(Site si){
-        sites.add(si);        
+    public void addSites(Site si) {
+        sites.add(si);
     }
-    
+
     public Date getStartTime() {
         return startTime;
     }
@@ -84,7 +88,6 @@ public class Schedules implements Serializable {
         this.sites = sites;
     }
 
- 
     public Long getId() {
         return id;
     }
@@ -115,7 +118,7 @@ public class Schedules implements Serializable {
 
     @Override
     public String toString() {
-        return "entities.Schedules[ id=" + id + " ]";
+        return "Schedules{" + "id=" + id + ", price=" + price + ", startTime=" + startTime + ", endTime=" + endTime + ", sites=" + sites + '}';
     }
-    
+
 }

@@ -19,11 +19,13 @@ public class StaffFacade extends AbstractFacade<Staff> {
     @PersistenceContext(unitName = "com.mycompany_CityTour")
     private EntityManager em;
 
+    
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
 
+    
     public StaffFacade() {
         super(Staff.class);
     }

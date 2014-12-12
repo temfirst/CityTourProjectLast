@@ -17,10 +17,10 @@
                 <h:panelGrid columns="2">
                     
                     <h:outputLabel value="Site : "/>
-                    <h:selectManyListbox id="sites" value="#{scheduleController.sites}" >
+                    
+                    <h:selectManyListbox id="sites" value="#{scheduleController.temp}" >
                         <f:selectItems value="#{scheduleController.popedSites}" var="cat"
-                                       itemLabel="#{cat.name}" itemValue="#{cat.name}" />
-                        <f:selectItems itemValue="hey"/>
+                                       itemLabel="#{cat.name}" itemValue="#{cat.site_id}" />                        
                     </h:selectManyListbox>                     
 
                     <p:growl id="msgs" showDetail="true" /> 
@@ -33,7 +33,7 @@
                     <h:outputLabel value="Price : "/>
                     <p:inputText value="#{scheduleController.sch.price}"/>
                 </h:panelGrid>s
-                <h:commandButton value="Add Schedule" action="#{siteController.doCreateSite()}">
+                <h:commandButton value="Add Schedule" action="#{scheduleController.doCreateSchedule}">
 
                 </h:commandButton>
             </h:form>

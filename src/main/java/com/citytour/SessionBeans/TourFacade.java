@@ -5,8 +5,11 @@
  */
 package com.citytour.SessionBeans;
 
-import com.citytour.entities.Schedules;
+import com.citytour.entities.Tour;
+import java.util.Date;
+import java.util.Calendar;
 import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -17,7 +20,7 @@ import javax.persistence.Query;
  * @author User
  */
 @Stateless
-public class SchedulesFacade extends AbstractFacade<Schedules> {
+public class TourFacade extends AbstractFacade<Tour> {
     @PersistenceContext(unitName = "com.mycompany_CityTour")
     private EntityManager em;
 
@@ -26,13 +29,13 @@ public class SchedulesFacade extends AbstractFacade<Schedules> {
         return em;
     }
 
-    public SchedulesFacade() {
-        super(Schedules.class);
+    public TourFacade() {
+        super(Tour.class);
     }
     
-    public List<Schedules> getTripSchedules(Long id){
-        Query q = em.createQuery("select s from Schedules s where s.id=:id");
-        q.setParameter("id",id);
-        return q.getResultList();
+    public List <Tour> getPlanedTrips(Date temp){
+        Query q = em.createQuery("select t from Tour t where t.date=:ftemp");
+        q.setParameter("ftemp", temp);
+        return q.getResultList(); 
     }
 }
