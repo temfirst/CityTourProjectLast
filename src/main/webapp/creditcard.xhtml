@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        Hello from Facelets
+        <h:form>
+            <p:fieldset>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Card Information" style="font-weight: bold"/>
+
+                    <h:outputLabel value=""/>
+                    <h:outputLabel value="CardNumber * : "/>
+                    <h:inputText value="#{customerController.creditCard.cardNumber}" required="true"/>
+
+
+                    <h:outputLabel value="CardHolderName * : "/>
+
+
+                    <h:inputText value="#{customerController.creditCard.name}" required="true"/>
+                    
+                    <h:outputLabel value="Card type * : "/>
+                    <h:selectOneMenu id="creditType" value="#{customerController.creditCard.creditCardType}">
+                        <f:selectItems value="#{customerController.creditCardTypeValues}" var="g" 
+                                       itemValue="#{g}" itemLabel="#{g}"/>
+                    </h:selectOneMenu>
+
+                     <h:outputLabel value="Expiration Date* : "/>
+
+                    <h:panelGroup>
+                        <h:selectOneMenu value="#{customerController.creditCard.expMonth}">
+                            <f:selectItem itemValue="1" itemLabel="Month"/>
+                            <f:selectItem itemValue="2" itemLabel="01-Jan"/>
+                            <f:selectItem itemValue="3" itemLabel="02-Feb"/>
+                            <f:selectItem itemValue="4" itemLabel="03-Mar"/>
+                            <f:selectItem itemValue="5" itemLabel="04-Apr"/>
+                            <f:selectItem itemValue="6" itemLabel="05-May"/>
+                            <f:selectItem itemValue="7" itemLabel="06-Jun"/>
+                            <f:selectItem itemValue="8" itemLabel="07-Jul"/>
+                            <f:selectItem itemValue="9" itemLabel="08-Aug"/>
+                            <f:selectItem itemValue="10" itemLabel="09-Sep"/>
+                            <f:selectItem itemValue="11" itemLabel="10-Oct"/>
+                            <f:selectItem itemValue="12" itemLabel="11-Nov"/>
+                            <f:selectItem itemValue="13" itemLabel="12-Dec"/>
+                        </h:selectOneMenu>
+                    
+
+
+                        <h:selectOneMenu value="#{customerController.creditCard.expYear}">
+                            <f:selectItem itemValue="1" itemLabel="Year"/>
+                            <f:selectItem itemValue="2" itemLabel="2014"/>
+                            <f:selectItem itemValue="3" itemLabel="2015"/>
+                            <f:selectItem itemValue="4" itemLabel="2016"/>
+                            <f:selectItem itemValue="5" itemLabel="2017"/>
+                            <f:selectItem itemValue="6" itemLabel="2018"/>
+                            <f:selectItem itemValue="7" itemLabel="2019"/>
+                            <f:selectItem itemValue="8" itemLabel="2020"/>
+                            <f:selectItem itemValue="9" itemLabel="2021"/>
+
+                        </h:selectOneMenu>
+                    </h:panelGroup>
+                    
+                <h:outputLabel value="Card Identification Number * : "/>
+
+
+                <h:inputText value="#{customerController.creditCard.controlNumber}" required="true"/>
+
+               
+
+                    
+
+                    <h:outputLabel value="Billing Address" style="font-weight: bold"/>
+
+                    <h:outputLabel value=""/>
+
+                    <h:outputLabel value="Address Line1 *: "/>
+                    <h:inputText value="#{customerController.address.address_Line1}" required="true"/>
+
+                    <h:outputLabel value="Address Line2 : "/>
+                    <h:inputText value="#{customerController.address.address_Line2}" />
+
+                    <h:outputLabel value="City * : "/>
+                    <h:inputText value="#{customerController.address.city}" required="true"/>
+
+                    <h:outputLabel value="Country * : "/>
+                    <h:inputText value="#{customerController.address.county}" required="true"/>
+
+                    <h:outputLabel value="State *: "/>
+                    <h:inputText value="#{customerController.address.state}" required="true"/>
+
+                    <h:outputLabel value="Zip_code * : "/>
+                    <h:inputText value="#{customerController.address.zip_Code}" required="true"/>
+
+
+
+                </h:panelGrid>
+            </p:fieldset>
+            <h:commandButton value="Register" action="#{customerController.doCreateCustomer()}"/>
+
+            <h:commandButton value="Cancel" action="index.xhtml"/> 
+
+        </h:form>
+    </h:body>
+</html>
+

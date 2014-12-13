@@ -11,6 +11,7 @@ import javax.ejb.Stateless;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -19,7 +20,7 @@ import javax.persistence.PersistenceContext;
 @Named
 @Stateless
 public class CustomerFacade extends AbstractFacade<Customer>  {
-    @PersistenceContext(unitName = "com.mycompany_CityTourAndTravel_war_1.0-SNAPSHOTPU")
+    @PersistenceContext(unitName = "com.mycompany_TourProject_war_1.0-SNAPSHOTPU")
     private EntityManager em;
     
     public Customer createCustomer(Customer cust)
@@ -35,8 +36,17 @@ public class CustomerFacade extends AbstractFacade<Customer>  {
     public Customer findBookByID(Long id)
     {
         return em.find(Customer.class, id);
-    }       
-
+    }  
+     public Customer findByUserName(String userName,String passWord)
+    {
+        Customer customer = new Customer();
+        Query query= em.createQuery("select c from Customer c where c.userName=:usern and c.passWord=:passWord");
+        query.setParameter("usern", userName);
+        query.setParameter("passWord", passWord);
+        customer=(Customer) query.getSingleResult();
+        return customer;
+    }      
+ 
     
     @Override
     protected EntityManager getEntityManager() {

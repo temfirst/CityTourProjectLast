@@ -35,6 +35,19 @@ public class Customer extends Person implements Serializable {
     private boolean certified;
     private String userName;
     private String passWord;
+    @OneToMany
+    @JoinTable(name="jnd_cut_Card", joinColumns=@JoinColumn(name="cut_fk"),
+            inverseJoinColumns = @JoinColumn(name="credit_fk"))
+    private List<CreditCard> creditcards; 
+
+    public List<CreditCard> getCreditcards() {
+        return creditcards;
+    }
+
+    public void setCreditcards(List<CreditCard> creditcards) {
+        this.creditcards = creditcards;
+    }
+    
 
     public String getUserName() {
         return userName;

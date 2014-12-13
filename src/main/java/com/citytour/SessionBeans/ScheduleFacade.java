@@ -16,7 +16,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class ScheduleFacade extends AbstractFacade<Schedule> {
-    @PersistenceContext(unitName = "com.mycompany_CityTourAndTravel_war_1.0-SNAPSHOTPU")
+    @PersistenceContext(unitName = "com.mycompany_TourProject_war_1.0-SNAPSHOTPU")
     private EntityManager em;
 
     @Override

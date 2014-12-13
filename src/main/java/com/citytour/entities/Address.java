@@ -30,6 +30,16 @@ public class Address implements Serializable {
     private String state;
     private String zip_Code;
     private String phone_Number;
+    private String email;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
 
     public String getAddress_Line1() {
         return address_Line1;

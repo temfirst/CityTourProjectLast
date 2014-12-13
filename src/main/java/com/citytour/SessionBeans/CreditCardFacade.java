@@ -5,17 +5,17 @@
  */
 package com.citytour.SessionBeans;
 
-import com.citytour.entities.Staff;
+import com.citytour.entities.CreditCard;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author CS Life
+ * @author Betty
  */
 @Stateless
-public class StaffFacade extends AbstractFacade<Staff> {
+public class CreditCardFacade extends AbstractFacade<CreditCard> {
     @PersistenceContext(unitName = "com.mycompany_TourProject_war_1.0-SNAPSHOTPU")
     private EntityManager em;
 
@@ -24,8 +24,8 @@ public class StaffFacade extends AbstractFacade<Staff> {
         return em;
     }
 
-    public StaffFacade() {
-        super(Staff.class);
+    public CreditCardFacade() {
+        super(CreditCard.class);
     }
     
 }
