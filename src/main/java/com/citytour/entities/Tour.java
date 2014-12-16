@@ -24,20 +24,16 @@ public class Tour implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long tour_id;
     @Temporal(TemporalType.DATE)
-    private Date date;
-    private double price;
+    private Date date;    
     private int numb_of_visitors;
-    @OneToOne(cascade = CascadeType.ALL)
-    private Schedule schedule;
-
-    public Schedule getSchedule() {
-        return schedule;
-    }
-
-    public void setSchedule(Schedule schedule) {
-        this.schedule = schedule;
-    }
     
+    @OneToOne
+    @JoinColumn(name="Staff_ID")
+    private Staff staff;
+    
+    @OneToOne(cascade= CascadeType.ALL)
+    @JoinColumn(name="Sched_ID")
+    private Schedules sch;
 
     public Long getTour_id() {
         return tour_id;
@@ -55,28 +51,30 @@ public class Tour implements Serializable {
         this.date = date;
     }
 
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-   
-
     public int getNumb_of_visitors() {
         return numb_of_visitors;
     }
 
+    public Staff getStaff() {
+        return staff;
+    }
+
+    public void setStaff(Staff staff) {
+        this.staff = staff;
+    }
+
+    public Schedules getSch() {
+        return sch;
+    }
+
+    public void setSch(Schedules sch) {
+        this.sch = sch;
+    }
+    
+    
     public void setNumb_of_visitors(int numb_of_visitors) {
         this.numb_of_visitors = numb_of_visitors;
     }
 
-    
-    
- 
-
-    
-    
+        
 }

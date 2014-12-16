@@ -7,31 +7,39 @@
       xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="pagelayout.xhtml">
-        
-        <ui:define name="title">Add Site</ui:define>
-        <ui:define name="content">
-           
+        <ui:define name="title">Add Schedule</ui:define>
+        <ui:define name="content">   
+
+
+
+
             <h:form id="siteForm1">
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="Category : "/>
-                    <h:inputText value="#{siteController.site.category}"/>
+                    
+                    <h:outputLabel value="Site : "/>
+                    
+                    <h:selectManyListbox id="sites" value="#{scheduleController.temp}" >
+                        <f:selectItems value="#{scheduleController.popedSites}" var="cat"
+                                       itemLabel="#{cat.name}" itemValue="#{cat.site_id}" />                        
+                    </h:selectManyListbox>                     
 
+                    <p:growl id="msgs" showDetail="true" /> 
 
-                    <h:outputLabel value="Distance : "/>
-                    <h:inputText value="#{siteController.site.distance}"/>
-
-                    <h:outputLabel value="Address : "/>
-                    <h:inputText value="#{siteController.site.address}"/>
-
-
-                </h:panelGrid>
-                <h:commandButton value="Add Site" action="#{siteController.doCreateSite()}">
+                    <p:outputLabel for="time" value="" />
+                    <h:outputLabel value="Start Time : "/>
+                    <p:calendar id="time" value="#{scheduleController.sch.startTime}" pattern="HH:mm a" timeOnly="true"  />
+                    <h:outputLabel value="End Time : "/>
+                    <p:calendar id="time2" value="#{scheduleController.sch.endTime}" pattern="HH:mm a" timeOnly="true"  />
+                    <h:outputLabel value="Price : "/>
+                    <p:inputText value="#{scheduleController.sch.price}"/>
+                </h:panelGrid>s
+                <h:commandButton value="Add Schedule" action="#{scheduleController.doCreateSchedule}">
 
                 </h:commandButton>
             </h:form>
 
             <hr/>
-            <h1> List of sites</h1>
+            <h1> List of Schedule</h1>
             <p:dataTable id="sitelist" value="#{siteController.doFindAllSite()}" var="st" editable="true" style="margin-bottom:10px">
                 <p:column>
                     <f:facet name="header">

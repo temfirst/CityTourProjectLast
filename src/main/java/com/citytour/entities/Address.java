@@ -96,6 +96,13 @@ public class Address implements Serializable {
     public void setPhone_Number(String phone_Number) {
         this.phone_Number = phone_Number;
     }
+    private String zip_Code;
+    private String phone_Number;
+
+    @Override
+    public String toString() {
+        return "Address{" + "address_Line1=" + address_Line1 + ", address_Line2=" + address_Line2 + ", city=" + city + ", county=" + county + ", state=" + state + ", zip_Code=" + zip_Code + ", phone_Number=" + phone_Number + '}';
+    }
   
     
             

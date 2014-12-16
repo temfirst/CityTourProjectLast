@@ -16,14 +16,16 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class StaffFacade extends AbstractFacade<Staff> {
-    @PersistenceContext(unitName = "com.mycompany_TourProject_war_1.0-SNAPSHOTPU")
+    @PersistenceContext(unitName = "com.mycompany_CityTour")
     private EntityManager em;
 
+    
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
 
+    
     public StaffFacade() {
         super(Staff.class);
     }

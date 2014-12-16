@@ -29,8 +29,8 @@ public class Customer extends Person implements Serializable {
     
     private int sitNo;
     @OneToMany
-    @JoinTable(name="jnd_cut_tour", joinColumns=@JoinColumn(name="cut_fk"),
-            inverseJoinColumns = @JoinColumn(name="tour_fk"))
+//    @JoinTable(name="jnd_cut_tour", joinColumns=@JoinColumn(name="cut_fk"),
+//            inverseJoinColumns = @JoinColumn(name="tour_fk"))
     private List<Tour> booktrips; 
     private boolean certified;
     private String userName;

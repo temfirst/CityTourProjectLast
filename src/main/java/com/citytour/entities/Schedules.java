@@ -6,6 +6,7 @@
 package com.citytour.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -13,29 +14,63 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
  *
- * @author Betty
+ * @author User
  */
 @Entity
-public class Schedule implements Serializable {
+public class Schedules implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     private Long id;
-    @Temporal (TemporalType.TIME)
+
+    private double price;
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+    @Temporal(TemporalType.TIME)
     private Date startTime;
-    @Temporal (TemporalType.TIME)
+
+    @Temporal(TemporalType.TIME)
     private Date endTime;
+
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinTable(name="site_schedual")
-    private List<Site> sites;
+//    @JoinTable(name = "site_schedule",
+//            joinColumns = {
+//                @JoinColumn(name = "sch_ID", referencedColumnName="sch_ID")},
+//            inverseJoinColumns = {
+//                @JoinColumn(name = "site_Id", referencedColumnName="site_Id")})
+    private List<Site> sites = new ArrayList<Site>();
+
+    public Schedules() {
+    }
+
+    public void addSites(Site si) {
+        sites.add(si);
+    }
+
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
 
     public Date getEndTime() {
         return endTime;
@@ -52,26 +87,6 @@ public class Schedule implements Serializable {
     public void setSites(List<Site> sites) {
         this.sites = sites;
     }
-    
-    
-
-    public Date getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(Date startTime) {
-        this.startTime = startTime;
-    }
-
-    public Date getEndDate() {
-        return endTime;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endTime = endDate;
-    }
-    
-   
 
     public Long getId() {
         return id;
@@ -91,10 +106,10 @@ public class Schedule implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Schedule)) {
+        if (!(object instanceof Schedules)) {
             return false;
         }
-        Schedule other = (Schedule) object;
+        Schedules other = (Schedules) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -103,7 +118,7 @@ public class Schedule implements Serializable {
 
     @Override
     public String toString() {
-        return "com.citytour.entities.Schedule[ id=" + id + " ]";
+        return "Schedules{" + "id=" + id + ", price=" + price + ", startTime=" + startTime + ", endTime=" + endTime + ", sites=" + sites + '}';
     }
-    
+
 }

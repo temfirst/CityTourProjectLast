@@ -6,9 +6,12 @@
 package com.citytour.SessionBeans;
 
 import com.citytour.entities.Tour;
+import java.util.Date;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -16,7 +19,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class TripFacade extends AbstractFacade<Tour> {
-    @PersistenceContext(unitName = "com.mycompany_TourProject_war_1.0-SNAPSHOTPU")
+    @PersistenceContext(unitName = "com.mycompany_CityTour")
     private EntityManager em;
 
     @Override
@@ -28,4 +31,9 @@ public class TripFacade extends AbstractFacade<Tour> {
         super(Tour.class);
     }
     
+    public Tour getPlanedTrips(Date temp){
+        Query q = em.createQuery("select t from Tour t where t.date=:ftemp");
+        q.setParameter("ftemp", temp);
+        return (Tour) q.getSingleResult();
+    }
 }

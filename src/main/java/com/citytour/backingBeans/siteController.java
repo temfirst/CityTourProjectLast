@@ -53,7 +53,8 @@ public class siteController {
       
     public String doCreateSite()
     {
-      siteEJB.createSite(site);
+      siteEJB.create(site);
+       // siteEJB.createSite(site);
       return "Admin.xhtml";
     }
     
