@@ -12,11 +12,11 @@
             <h:form id="siteForm1">
                 <h:panelGrid columns="2">
                     <p:outputLabel value="Tour Days" />
-                    
+                    <!-- mode = "inline"-->
                     <p:calendar  value="#{dateController.temp}"
                                 locale="de" 
                                 navigator="true" 
-                                mode = "inline"
+                               
                                 validatorMessage="Year should be in YYYY/mm/dd format"
                                 pattern="MM/dd/yy"  >
                         <f:convertDateTime pattern="MM/dd/yy" />

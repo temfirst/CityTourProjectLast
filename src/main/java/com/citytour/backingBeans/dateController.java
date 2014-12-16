@@ -40,6 +40,9 @@ public class dateController {
     private List<Schedules> schs = new ArrayList<Schedules>();
     private List<Tour> tours = new ArrayList<Tour>();
     private List<Site> sites = new ArrayList<Site>();
+    private List<String> schedulStr = new ArrayList<>();
+    private List<PurchaseDescription> cartList = new ArrayList<>();
+    private int index;
 
     public TourFacade getTourEJB() {
         return tourEJB;
@@ -52,51 +55,43 @@ public class dateController {
     public List<Site> getSites() {
         return sites;
     }
-    private List<String> schedulStr = new ArrayList<>();
-    private List<PurchaseDescription> cartList=new ArrayList<>();
-    private int  index;
-    
+
     public dateController() {
     }
 
-    public String dateFetcher() {
+    public void dateFetcher() {
 
         tours = tourEJB.getPlanedTrips(temp);
-        String str = String.valueOf(index);
+        String str = "";
 
-        for (Tour t : tours) {
-            //schs = schEJB.getTripSchedules(t.getSch().getId());
-              schs.add(t.getSch());
-            //str += t.getSch().getStartTime()+ " " + t.getSch().getEndTime();
-            
+        for (Tour t : tours) {            
+            schs.add(t.getSch());
+            str += "Date: " + t.getDate() + " " + "Start Time: " + t.getSch().getStartTime() + 
+                    " " + "End Time: "+ t.getSch().getEndTime();
             for (Site s : t.getSch().getSites()) {
-               sites.add(s);
-                //str += s.getName() + s.getAddress();
-               str+=s.getName();
+                sites.add(s);
+                str += "Site Name: " + s.getName();
             }
-            
+
             schedulStr.add(str);
-        }
-        
-        return "selectSchedule";
-    }
-    
-    public String loadingCart(int index)
-    {
-       int quantity=3;//try to accept the quanity from combo or other means
-       
-       PurchaseDescription purchDesc =new PurchaseDescription();
-       
-       purchDesc.setDescription(schedulStr.get(index));
-       purchDesc.setQuantity(quantity);
-       purchDesc.setUnitPrice(tours.get(index).getSch().getPrice());
-       purchDesc.setTax((tours.get(index).getSch().getPrice()*quantity)*0.01);
-       
-       cartList.add(purchDesc);
-       
-       return "purchaseSummary";
+            str = "";
+        }     
     }
 
+    public String loadingCart(int index) {
+        int quantity = 3;//try to accept the quanity from combo or other means
+
+        PurchaseDescription purchDesc = new PurchaseDescription();
+
+        purchDesc.setDescription(schedulStr.get(index));
+        purchDesc.setQuantity(quantity);
+        purchDesc.setUnitPrice(tours.get(index).getSch().getPrice());
+        purchDesc.setTax((tours.get(index).getSch().getPrice() * quantity) * 0.01);
+
+        cartList.add(purchDesc);
+
+        return "purchaseSummary";
+    }
 
     public SchedulesFacade getSchEJB() {
         return schEJB;

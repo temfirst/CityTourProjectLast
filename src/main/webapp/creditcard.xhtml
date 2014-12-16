@@ -3,29 +3,51 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        Hello from Facelets
-        <h:form>
+        
+        
+        <ui:composition template="./templet.xhtml">
+
+            <ui:define name="title">
+                title
+            </ui:define>
+
+            <ui:define name="menu">
+                <div id="templatemo_menu">
+                    <ul>
+                        <li><a href="#" class="current">Home</a></li>
+                        <li><a href="#">Tour Packages</a></li>
+                        <li><a href="#">Sites</a></li>
+                        <li><a href="#">Gallery</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#" class="last">Contact Us</a></li>
+                    </ul>    	
+                </div> 
+            </ui:define>
+
+            <ui:define name="middle">
+                <h:form>
             <p:fieldset>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="Card Information" style="font-weight: bold"/>
 
                     <h:outputLabel value=""/>
                     <h:outputLabel value="CardNumber * : "/>
-                    <h:inputText value="#{customerController.creditCard.cardNumber}" required="true"/>
+                    <h:inputText value="#{customerController.cr.cardNumber}" required="true"/>
 
 
                     <h:outputLabel value="CardHolderName * : "/>
 
 
-                    <h:inputText value="#{customerController.creditCard.name}" required="true"/>
+                    <h:inputText value="#{customerController.cr.name}" required="true"/>
                     
                     <h:outputLabel value="Card type * : "/>
-                    <h:selectOneMenu id="creditType" value="#{customerController.creditCard.creditCardType}">
+                    <h:selectOneMenu id="creditType" value="#{customerController.cr.creditCardType}">
                         <f:selectItems value="#{customerController.creditCardTypeValues}" var="g" 
                                        itemValue="#{g}" itemLabel="#{g}"/>
                     </h:selectOneMenu>
@@ -33,7 +55,7 @@
                      <h:outputLabel value="Expiration Date* : "/>
 
                     <h:panelGroup>
-                        <h:selectOneMenu value="#{customerController.creditCard.expMonth}">
+                        <h:selectOneMenu value="#{customerController.cr.expMonth}">
                             <f:selectItem itemValue="1" itemLabel="Month"/>
                             <f:selectItem itemValue="2" itemLabel="01-Jan"/>
                             <f:selectItem itemValue="3" itemLabel="02-Feb"/>
@@ -51,7 +73,7 @@
                     
 
 
-                        <h:selectOneMenu value="#{customerController.creditCard.expYear}">
+                        <h:selectOneMenu value="#{customerController.cr.expYear}">
                             <f:selectItem itemValue="1" itemLabel="Year"/>
                             <f:selectItem itemValue="2" itemLabel="2014"/>
                             <f:selectItem itemValue="3" itemLabel="2015"/>
@@ -68,7 +90,7 @@
                 <h:outputLabel value="Card Identification Number * : "/>
 
 
-                <h:inputText value="#{customerController.creditCard.controlNumber}" required="true"/>
+                <h:inputText value="#{customerController.cr.controlNumber}" required="true"/>
 
                
 
@@ -105,6 +127,35 @@
             <h:commandButton value="Cancel" action="index.xhtml"/> 
 
         </h:form>
+            </ui:define>
+
+            <ui:define name="right">
+                <div class="content">
+                <h:form>
+                    <h:outputLabel value="UserName * : "/>
+                    <h:inputText value="#{loginController.custmer.userName}" required="true"/><br/>
+
+                    <h:outputLabel value="PassWord *: "/>
+                    <h:inputSecret value="#{loginController.custmer.passWord}" required="true"/><br/>
+
+                    <h:commandButton value="Login" action="#{loginController.checkLogin()}"/>
+                </h:form>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Hello from Facelets
+        
     </h:body>
 </html>
 

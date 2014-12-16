@@ -96,8 +96,7 @@ public class Address implements Serializable {
     public void setPhone_Number(String phone_Number) {
         this.phone_Number = phone_Number;
     }
-    private String zip_Code;
-    private String phone_Number;
+   
 
     @Override
     public String toString() {

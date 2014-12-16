@@ -16,7 +16,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class CreditCardFacade extends AbstractFacade<CreditCard> {
-    @PersistenceContext(unitName = "com.mycompany_TourProject_war_1.0-SNAPSHOTPU")
+    @PersistenceContext(unitName = "cityTourdbPU")
     private EntityManager em;
 
     @Override

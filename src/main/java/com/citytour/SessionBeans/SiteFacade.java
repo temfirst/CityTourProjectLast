@@ -20,7 +20,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class SiteFacade extends AbstractFacade<Site> {
-    @PersistenceContext(unitName = "com.mycompany_CityTour")
+    @PersistenceContext(unitName = "cityTourdbPU")
     private EntityManager em;
 
     

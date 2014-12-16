@@ -15,15 +15,17 @@
             <h:form> 
                 <ul>
                     <ui:repeat value="#{dateController.cartList}" var="p" varStatus="status">
-
-                        <li><h:commandLink value="#{p.description + p.quantity + p.tax + p.unitPrice}"/> </li>
+                        
+                        <li><h:outputText value="#{p.description}"/></li>
+                        <h:outputText value="#{p.unitPrice}"/>
+                        <h:outputText value ="#{p.tax}"/>
+                            
                     </ui:repeat> <br/>  
                     
                             <h:commandButton  value="Back" action="#"/>
                             <h:commandButton  value="Cancel" action="#"/>
-                            <h:commandButton  value="Check Out" action="#"/>                   
+                            <h:commandButton  value="Check Out" action="#"/>            
                     
-
                 </ul>
             </h:form>           
 

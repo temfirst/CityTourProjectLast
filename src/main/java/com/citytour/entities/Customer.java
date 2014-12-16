@@ -7,7 +7,9 @@ package com.citytour.entities;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,16 +30,15 @@ public class Customer extends Person implements Serializable {
     private static final long serialVersionUID = 1L;
     
     private int sitNo;
-    @OneToMany
-//    @JoinTable(name="jnd_cut_tour", joinColumns=@JoinColumn(name="cut_fk"),
-//            inverseJoinColumns = @JoinColumn(name="tour_fk"))
+    @OneToMany(fetch= FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name ="cust_FK")
     private List<Tour> booktrips; 
     private boolean certified;
     private String userName;
     private String passWord;
-    @OneToMany
-    @JoinTable(name="jnd_cut_Card", joinColumns=@JoinColumn(name="cut_fk"),
-            inverseJoinColumns = @JoinColumn(name="credit_fk"))
+    
+    @OneToMany(fetch = FetchType.EAGER , cascade = CascadeType.ALL)
+    @JoinColumn(name ="cust_FK")
     private List<CreditCard> creditcards; 
 
     public List<CreditCard> getCreditcards() {

@@ -11,54 +11,27 @@
         <ui:define name="content">
             <h:form id="siteForm1">
                 <h:panelGrid columns="2">
-
-
                     <p:growl id="msgs" showDetail="true" />
                     <h:panelGrid columns="2" cellpadding="5">
                         <p:outputLabel value="Tour Days" />
                         <p:calendar id="dateinput" value="#{dateController.temp}"
                                     locale="de" 
                                     navigator="true" 
-                                    mode = "inline"
+
                                     validatorMessage="Year should be in YYYY/mm/dd format"
                                     pattern="MM/dd/yy"  >
                             <f:convertDateTime pattern="MM/dd/yy" />
                             <!--<p:message for="trip" />-->
-
-
                         </p:calendar> 
                     </h:panelGrid>
-                </h:panelGrid>
+                    <f:ajax event="click" execute="@this" render="siteForm1"/>
+                    <p:commandButton value="Check Date" action="#{dateController.dateFetcher}"/>
+                </h:panelGrid>     
+                <hr/>
+                <h1> List of sites</h1>
 
-                <p:commandButton value="Check Date" action="#{dateController.dateFetcher}">
-                    <f:ajax event="click" execute="dateinput" render="output"/>
-                </p:commandButton>
-
-            </h:form>
-
-
-            <hr/>
-            <h1> List of sites</h1>
-
-            <h:form> 
-
-                <p:dataTable editable="true" style="margin-bottom:10px">
-
-                    <p:column>
-                        <f:facet name="Site">
-                            <h:outputText value="Descriptions"/>
-                        </f:facet>
-
-
-                    </p:column>
-
-
-
-                </p:dataTable>
-
-                <ui:repeat id = "output" value="#{dateController.schs}" var="p" varStatus="status">
-                    <h:outputText value="#{p}"/>
-                    <f:convertNumber />
+                <ui:repeat  value="#{dateController.schedulStr}" var="p" varStatus="status">
+                    <h:outputText value="#{p}"/>                    
                     <h:commandButton  value="Select Tour" action="#{dateController.loadingCart(status.index)}"/><br/>
                 </ui:repeat>
             </h:form>           

@@ -11,12 +11,14 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
@@ -49,12 +51,8 @@ public class Schedules implements Serializable {
     @Temporal(TemporalType.TIME)
     private Date endTime;
 
-    @OneToMany(cascade = CascadeType.ALL)
-//    @JoinTable(name = "site_schedule",
-//            joinColumns = {
-//                @JoinColumn(name = "sch_ID", referencedColumnName="sch_ID")},
-//            inverseJoinColumns = {
-//                @JoinColumn(name = "site_Id", referencedColumnName="site_Id")})
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name ="sch_FK")
     private List<Site> sites = new ArrayList<Site>();
 
     public Schedules() {

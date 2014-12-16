@@ -18,7 +18,7 @@ import javax.persistence.Query;
  */
 @Stateless
 public class SchedulesFacade extends AbstractFacade<Schedules> {
-    @PersistenceContext(unitName = "com.mycompany_CityTour")
+    @PersistenceContext(unitName = "cityTourdbPU")
     private EntityManager em;
 
     @Override

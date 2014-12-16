@@ -20,7 +20,7 @@ import javax.persistence.Query;
 @Named
 @Stateless
 public class CustomerFacade extends AbstractFacade<Customer>  {
-    @PersistenceContext(unitName = "com.mycompany_TourProject_war_1.0-SNAPSHOTPU")
+    @PersistenceContext(unitName = "cityTourdbPU")
     private EntityManager em;
     
     public Customer createCustomer(Customer cust)

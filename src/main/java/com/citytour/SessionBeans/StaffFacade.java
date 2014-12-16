@@ -16,7 +16,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class StaffFacade extends AbstractFacade<Staff> {
-    @PersistenceContext(unitName = "com.mycompany_CityTour")
+    @PersistenceContext(unitName = "cityTourdbPU")
     private EntityManager em;
 
     

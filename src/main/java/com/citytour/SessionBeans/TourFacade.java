@@ -9,6 +9,7 @@ import com.citytour.entities.Tour;
 import java.util.Date;
 import java.util.Calendar;
 import java.util.List;
+import javax.ejb.Stateful;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -19,9 +20,9 @@ import javax.persistence.Query;
  *
  * @author User
  */
-@Stateless
+@Stateful
 public class TourFacade extends AbstractFacade<Tour> {
-    @PersistenceContext(unitName = "com.mycompany_CityTour")
+    @PersistenceContext(unitName = "cityTourdbPU")
     private EntityManager em;
 
     @Override

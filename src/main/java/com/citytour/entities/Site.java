@@ -6,10 +6,14 @@
 package com.citytour.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 
@@ -24,7 +28,7 @@ public class Site implements Serializable {
     private String name;
     private Double distance;
     private String category;
-    private String address;
+    private String address;   
 
     
     public Long getSite_id() {
@@ -58,6 +62,8 @@ public class Site implements Serializable {
     public void setCategory(String category) {
         this.category = category;
     }
+
+    
 
     public String getAddress() {
         return address;
